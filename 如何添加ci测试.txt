@@ -1,0 +1,57 @@
+要在GitHub仓库的Actions中添加一个CI测试来验证`参考文献.txt`文件中是否有正确的参考文献格式，你可以按照以下步骤进行操作：
+
+1. **创建CI测试脚本：** 首先，你需要创建一个脚本来验证`参考文献.txt`文件的格式。你可以使用脚本语言，如Python或Shell，来完成这个任务。下面是一个示例Python脚本，用于验证`参考文献.txt`文件中是否有正确的参考文献格式：
+
+```python
+import re
+
+def validate_references(filename):
+    with open(filename, 'r', encoding='utf-8') as file:
+        content = file.read()
+        # 此处可以使用正则表达式或其他方法来验证参考文献的格式
+        # 这只是一个示例，你需要根据你的实际需求进行修改
+        if re.search(r'\d+\.\s[^\n]+', content):
+            print("参考文献格式正确")
+        else:
+            print("参考文献格式不正确")
+
+if __name__ == "__main__":
+    validate_references('参考文献.txt')
+```
+
+2. **将脚本添加到仓库：** 将上述脚本保存为一个文件，例如`validate_references.py`，然后将其添加到你的GitHub仓库中。
+
+3. **创建GitHub Actions Workflow 文件：** 在你的GitHub仓库中创建一个名为`.github/workflows`的文件夹，然后在该文件夹中创建一个YAML文件，例如`validate_references.yml`，用于定义CI测试的工作流。
+
+   下面是一个示例GitHub Actions工作流的YAML文件：
+
+```yaml
+name: Validate References
+
+on:
+  push:
+    branches:
+      - main  # 修改为你的主分支名称
+
+jobs:
+  validate_references:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # 修改为你想要使用的Python版本
+
+    - name: Validate References
+      run: python validate_references.py
+```
+
+4. **将工作流文件推送到仓库：** 将这个YAML文件推送到你的GitHub仓库的`.github/workflows`目录下。
+
+5. **触发CI测试：** 当你将这个文件推送到仓库后，GitHub Actions将会自动开始运行CI测试。你可以在GitHub仓库的Actions选项卡中查看工作流的运行情况。
+
+这个示例仅演示了一个简单的验证步骤，你可以根据你的实际需求来扩展这个工作流，以确保`参考文献.txt`文件中的格式符合你的规范。
