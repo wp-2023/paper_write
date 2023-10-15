@@ -1,0 +1,5 @@
+# github的参考文献
+- [github官方文档](https://docs.github.com/en)
+- [github百度百科](https://baike.baidu.com/item/Github/10145341?fr=ge_ala)
+- [github维基百科](https://en.wikipedia.org/wiki/GitHub)
+
