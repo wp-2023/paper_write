@@ -3,3 +3,4 @@
 - [github百度百科](https://baike.baidu.com/item/Github/10145341?fr=ge_ala)
 - [github维基百科](https://en.wikipedia.org/wiki/GitHub)
 
+1. Smith, John. "A Sample Article." Journal of Examples, vol. 10, no. 2, 2023, pp. 45-56.
